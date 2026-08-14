@@ -10,3 +10,8 @@ Desktop.ini
 # Vaqtinchalik fayllar
 *.tmp
 _t*.html
+
+# Maxfiy ma'lumotlar
+.env
+mandat-bot/.env
+__pycache__/
