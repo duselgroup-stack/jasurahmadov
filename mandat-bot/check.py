@@ -201,6 +201,8 @@ def main() -> int:
     cookie = os.environ.get("UZBMB_PHPSESSID", "").strip()
     heartbeat_on = os.environ.get("SEND_HEARTBEAT", "1").strip() != "0"
     heartbeat_hour = int(os.environ.get("HEARTBEAT_HOUR", "8"))
+    # Har tekshiruvda "chiqdi/chiqmadi" hisoboti yuborilsinmi.
+    report_every_run = os.environ.get("REPORT_EVERY_RUN", "0").strip() == "1"
 
     if not token or not chat_id:
         print(
@@ -291,6 +293,20 @@ def main() -> int:
     elif not mandat_hits:
         flags["mandat_notified"] = False
 
+    if not cookie:
+        scope_note = "faqat ochiq sahifalar"
+    elif flags.get("cookie_expired"):
+        scope_note = "🔑 cookie eskirgan"
+    else:
+        scope_note = "shaxsiy kabinet ham tekshirildi"
+
+    # Har tekshiruvda holat hisoboti (mandat topilmagan holatda).
+    if report_every_run and not mandat_hits and checked:
+        messages.append(
+            f"🔍 Mandat hali chiqmadi.\n"
+            f"<i>{stamp}</i> · {checked} ta sahifa · {scope_note}"
+        )
+
     if first_run:
         scope = "ochiq sahifalar + shaxsiy kabinet" if cookie else "faqat ochiq sahifalar"
         messages.append(
@@ -312,7 +328,8 @@ def main() -> int:
         flags["fail_streak"] = 0
 
     # Kuniga bir marta "tirikman" xabari.
-    if heartbeat_on and not first_run:
+    # Har tekshiruvda hisobot yuborilayotgan bo'lsa, bu ortiqcha.
+    if heartbeat_on and not report_every_run and not first_run:
         today = now.strftime("%Y-%m-%d")
         if now.hour >= heartbeat_hour and state.get("last_heartbeat") != today:
             state["last_heartbeat"] = today

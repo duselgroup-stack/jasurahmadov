@@ -88,10 +88,17 @@ python mandat-bot/check.py
 
 ## Sozlamalar
 
+Sozlamalar [`.github/workflows/mandat-check.yml`](../.github/workflows/mandat-check.yml)
+faylining `env:` bo'limida turadi.
+
 | O'zgaruvchi | Standart | Ma'nosi |
 |---|---|---|
-| `SEND_HEARTBEAT` | `1` | Kuniga bir marta «hali chiqmadi» xabari. `0` — o'chiradi |
+| `REPORT_EVERY_RUN` | `1` | Har tekshiruvda «chiqdi/chiqmadi» hisoboti. Kuniga ~96 ta xabar. `0` — o'chiradi |
+| `SEND_HEARTBEAT` | `1` | Kuniga bir marta «hali chiqmadi» xabari. `REPORT_EVERY_RUN=1` bo'lsa e'tiborga olinmaydi |
 | `HEARTBEAT_HOUR` | `8` | Kunlik xabar soati (Toshkent vaqti) |
+
+Xabar kamroq kelishini xohlasangiz ikki yo'l bor: `REPORT_EVERY_RUN` ni `0` ga
+o'tkazish, yoki tekshirish oralig'ini oshirish (`*/30` — yarim soatda bir marta).
 
 Tekshirish oralig'ini o'zgartirish: [`.github/workflows/mandat-check.yml`](../.github/workflows/mandat-check.yml)
 faylidagi `cron: "*/15 * * * *"` qatori.
