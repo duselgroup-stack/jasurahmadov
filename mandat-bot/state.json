@@ -1,6 +1,6 @@
 {
  "flags": {
-  "fail_streak": 1,
+  "fail_streak": 0,
   "mandat_notified": false
  },
  "pages": {
@@ -38,6 +38,7 @@
     "Xorijiy taʼlim tashkilotidan Nodavlat oliy taʼlim tashkilotiga ko‘chirish Ruxsatnomasi",
     "Iq test imtihon uchun ruxsatnoma",
     "Kasbiy (ijodiy) imtihon uchun ruxsatnoma",
+    "Davlat xavfsizlik xizmati akademiyasi",
     "Oliy va kasbiy (professional) ta’lim tashkilotlariga qabul",
     "(2026-2027-o‘quv yili uchun)",
     "Professional ta’lim muassasalariga qabul (tibbiyot texnikumlari)",
@@ -136,6 +137,7 @@
     "Bog‘lanish",
     "Koll markaz: 1195",
     "Boshqa xizmatlar",
+    "Davlat xavfsizlik xizmati akademiyasi",
     "Professional ta’lim muassasalariga qabul (tibbiyot texnikumlari)",
     "Toshkent davlat yuridik universiteti Ikkinchi ta'limga qabul",
     "Xorijiy taʼlim tashkilotidan Nodavlat oliy taʼlim tashkilotiga o‘qishni ko‘chirish",
